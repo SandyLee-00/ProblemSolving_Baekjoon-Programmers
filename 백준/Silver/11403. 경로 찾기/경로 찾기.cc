@@ -9,7 +9,7 @@
 using namespace std;
 
 /*
-
+// a - b && b - c이면 a - c 있다고 업데이트 하기
 */
 
 int v[105][105];
@@ -21,40 +21,25 @@ int main()
 	int N;
 	cin >> N;
 
-	
-	for(int i = 0; i < N; i++){
-		for(int j = 0; j < N; j++){
-			v[i][j] = INT_MAX;
-		}
-	}
-
 	for(int i = 0; i < N; i++){
 		for(int j = 0; j < N; j++){
 			cin >> v[i][j];
 		}
 	}
 
-	// a - b && b - c이면 a - c 있다고 업데이트 하기
-	for(int fir = 0; fir < N; fir++){
-		for(int sec = 0; sec < N; sec++){
-			for(int trd = 0; trd < N; trd++){
-				if(v[fir][sec] == 1 && v[sec][trd] == 1){
-					v[fir][trd] = 1;
+	// a - b && b - c이면 a - c 있다고 업데이트 하기 (X)
+	// middle을 거쳐 from to로 가는 길 있는지 체크
+	for(int mid = 0; mid < N; mid++){
+		for(int from = 0; from < N; from++){
+			for(int to = 0; to < N; to++){
+				if(v[from][mid] == 1 && v[mid][to] == 1){
+					v[from][to] = 1;
 				}
 			}
 		}
 	}
 
-	for(int fir = 0; fir < N; fir++){
-		for(int sec = 0; sec < N; sec++){
-			for(int trd = 0; trd < N; trd++){
-				if(v[fir][sec] == 1 && v[sec][trd] == 1){
-					v[fir][trd] = 1;
-				}
-			}
-		}
-	}
-
+	
 	for(int i = 0; i < N; i++){
 		for(int j = 0; j < N; j++){
 			cout << v[i][j] << " ";
