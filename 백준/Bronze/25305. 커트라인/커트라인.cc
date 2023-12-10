@@ -1,7 +1,5 @@
-// 1753번 최단경로
+// 
 /*
-시작 노드와 연결된 노드 거리 비교해서 업데이트
-시작 노드 방문 체크
 
 */
 #include <iostream>
@@ -10,9 +8,12 @@
 #include <algorithm>
 #include <math.h>
 #include <queue>
+#include <stack>
 #include <climits>
 #include <set>
+#include <sstream>
 using namespace std;
+using ll = long long;
 
 int main()
 {
@@ -24,15 +25,17 @@ int main()
 	cin >> k;
 
 	vector<int> v;
+
 	for(int i = 0; i < N; i++){
-		int x;
-		cin >> x;
-		v.push_back(x);
+		int a;
+		cin >> a;
+		v.push_back(a);
 	}
 
 	sort(v.begin(), v.end(), greater<int>());
 
 	cout << v[k-1];
 	
+
 	return 0;
 }
